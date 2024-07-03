@@ -1,0 +1,29 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '13.0'
+
+target 'NIOServer' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'Logging', "1.4.0"
+  # Crypto
+  pod 'CryptoSwift', "1.8.1"
+  
+  # RxSwift响应式编程库
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
+
+  # pod for SwiftNIO
+  pod 'SwiftNIOSSL', '2.19.0'
+  pod 'SwiftNIOWebSocket', '2.40.0'
+
+  target 'NIOServerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'NIOServerUITests' do
+    # Pods for testing
+  end
+
+end

@@ -1,0 +1,830 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67862ED2B08B33DE951DEBC5 /* Pods_NIOServer_NIOServerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118478A353E3250B88B1EF04 /* Pods_NIOServer_NIOServerUITests.framework */; };
+		7396976E1698EEF3C392B0A7 /* Pods_NIOServerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E08AA22CE2D967A0FA21357 /* Pods_NIOServerTests.framework */; };
+		BFB6D32F2C354D2200313F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D32E2C354D2200313F22 /* AppDelegate.swift */; };
+		BFB6D3312C354D2200313F22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3302C354D2200313F22 /* SceneDelegate.swift */; };
+		BFB6D3332C354D2200313F22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3322C354D2200313F22 /* ViewController.swift */; };
+		BFB6D3362C354D2200313F22 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BFB6D3352C354D2200313F22 /* Base */; };
+		BFB6D3382C354D2300313F22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB6D3372C354D2300313F22 /* Assets.xcassets */; };
+		BFB6D33B2C354D2300313F22 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BFB6D33A2C354D2300313F22 /* Base */; };
+		BFB6D3462C354D2300313F22 /* NIOServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3452C354D2300313F22 /* NIOServerTests.swift */; };
+		BFB6D3502C354D2300313F22 /* NIOServerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D34F2C354D2300313F22 /* NIOServerUITests.swift */; };
+		BFB6D3522C354D2300313F22 /* NIOServerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3512C354D2300313F22 /* NIOServerUITestsLaunchTests.swift */; };
+		BFB6D3622C354ED800313F22 /* LocalHttpServer+ServiceNIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3602C354ED800313F22 /* LocalHttpServer+ServiceNIO.swift */; };
+		BFB6D3632C354ED800313F22 /* NIOHttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3612C354ED800313F22 /* NIOHttpServer.swift */; };
+		BFB6D3662C354F1700313F22 /* LocalHttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3642C354F1700313F22 /* LocalHttpServer.swift */; };
+		BFB6D3672C354F1700313F22 /* LocalHttpServer+Cert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3652C354F1700313F22 /* LocalHttpServer+Cert.swift */; };
+		BFB6D36A2C354FE600313F22 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3692C354FE600313F22 /* ConsoleLogger.swift */; };
+		BFB6D36C2C35537E00313F22 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D36B2C35537E00313F22 /* FilePath.swift */; };
+		BFB6D36F2C35575800313F22 /* SwiftCryto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D36E2C35575800313F22 /* SwiftCryto.swift */; };
+		BFB6D3712C355D1A00313F22 /* UIDevice+IP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3702C355D1A00313F22 /* UIDevice+IP.swift */; };
+		BFB6D3742C35701A00313F22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3732C35701A00313F22 /* ContentView.swift */; };
+		EAADA77CAD1EFDEF5CCF3629 /* Pods_NIOServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96EE857D0A9BF787DC73778D /* Pods_NIOServer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BFB6D3422C354D2300313F22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFB6D3232C354D2200313F22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFB6D32A2C354D2200313F22;
+			remoteInfo = NIOServer;
+		};
+		BFB6D34C2C354D2300313F22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFB6D3232C354D2200313F22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFB6D32A2C354D2200313F22;
+			remoteInfo = NIOServer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0BBCA909A7327176B0EBFD8E /* Pods-NIOServer-NIOServerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIOServer-NIOServerUITests.release.xcconfig"; path = "Target Support Files/Pods-NIOServer-NIOServerUITests/Pods-NIOServer-NIOServerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0DA63CCB073B6692A77EB5AA /* Pods-NIOServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIOServer.release.xcconfig"; path = "Target Support Files/Pods-NIOServer/Pods-NIOServer.release.xcconfig"; sourceTree = "<group>"; };
+		118478A353E3250B88B1EF04 /* Pods_NIOServer_NIOServerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NIOServer_NIOServerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42007286B662CB9E65889BB1 /* Pods-NIOServerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIOServerTests.release.xcconfig"; path = "Target Support Files/Pods-NIOServerTests/Pods-NIOServerTests.release.xcconfig"; sourceTree = "<group>"; };
+		5BAC1E29833006B9178A0716 /* Pods-NIOServer-NIOServerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIOServer-NIOServerUITests.debug.xcconfig"; path = "Target Support Files/Pods-NIOServer-NIOServerUITests/Pods-NIOServer-NIOServerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5BE6C41076A257C33ED3820A /* Pods-NIOServerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIOServerTests.debug.xcconfig"; path = "Target Support Files/Pods-NIOServerTests/Pods-NIOServerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5E08AA22CE2D967A0FA21357 /* Pods_NIOServerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NIOServerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96EE857D0A9BF787DC73778D /* Pods_NIOServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NIOServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC13DCC2E414209C57D0E3FC /* Pods-NIOServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIOServer.debug.xcconfig"; path = "Target Support Files/Pods-NIOServer/Pods-NIOServer.debug.xcconfig"; sourceTree = "<group>"; };
+		BFB6D32B2C354D2200313F22 /* NIOServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NIOServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFB6D32E2C354D2200313F22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFB6D3302C354D2200313F22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BFB6D3322C354D2200313F22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFB6D3352C354D2200313F22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFB6D3372C354D2300313F22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFB6D33A2C354D2300313F22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BFB6D33C2C354D2300313F22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFB6D3412C354D2300313F22 /* NIOServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NIOServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFB6D3452C354D2300313F22 /* NIOServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIOServerTests.swift; sourceTree = "<group>"; };
+		BFB6D34B2C354D2300313F22 /* NIOServerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NIOServerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFB6D34F2C354D2300313F22 /* NIOServerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIOServerUITests.swift; sourceTree = "<group>"; };
+		BFB6D3512C354D2300313F22 /* NIOServerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIOServerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BFB6D3602C354ED800313F22 /* LocalHttpServer+ServiceNIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalHttpServer+ServiceNIO.swift"; sourceTree = "<group>"; };
+		BFB6D3612C354ED800313F22 /* NIOHttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOHttpServer.swift; sourceTree = "<group>"; };
+		BFB6D3642C354F1700313F22 /* LocalHttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalHttpServer.swift; sourceTree = "<group>"; };
+		BFB6D3652C354F1700313F22 /* LocalHttpServer+Cert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalHttpServer+Cert.swift"; sourceTree = "<group>"; };
+		BFB6D3692C354FE600313F22 /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
+		BFB6D36B2C35537E00313F22 /* FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePath.swift; sourceTree = "<group>"; };
+		BFB6D36E2C35575800313F22 /* SwiftCryto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCryto.swift; sourceTree = "<group>"; };
+		BFB6D3702C355D1A00313F22 /* UIDevice+IP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+IP.swift"; sourceTree = "<group>"; };
+		BFB6D3732C35701A00313F22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFB6D3282C354D2200313F22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAADA77CAD1EFDEF5CCF3629 /* Pods_NIOServer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB6D33E2C354D2300313F22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7396976E1698EEF3C392B0A7 /* Pods_NIOServerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB6D3482C354D2300313F22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67862ED2B08B33DE951DEBC5 /* Pods_NIOServer_NIOServerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C3CC38D6BAD095FBC846161 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC13DCC2E414209C57D0E3FC /* Pods-NIOServer.debug.xcconfig */,
+				0DA63CCB073B6692A77EB5AA /* Pods-NIOServer.release.xcconfig */,
+				5BAC1E29833006B9178A0716 /* Pods-NIOServer-NIOServerUITests.debug.xcconfig */,
+				0BBCA909A7327176B0EBFD8E /* Pods-NIOServer-NIOServerUITests.release.xcconfig */,
+				5BE6C41076A257C33ED3820A /* Pods-NIOServerTests.debug.xcconfig */,
+				42007286B662CB9E65889BB1 /* Pods-NIOServerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		41E169F37B1ED13471EF8269 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96EE857D0A9BF787DC73778D /* Pods_NIOServer.framework */,
+				118478A353E3250B88B1EF04 /* Pods_NIOServer_NIOServerUITests.framework */,
+				5E08AA22CE2D967A0FA21357 /* Pods_NIOServerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFB6D3222C354D2200313F22 = {
+			isa = PBXGroup;
+			children = (
+				BFB6D32D2C354D2200313F22 /* NIOServer */,
+				BFB6D3442C354D2300313F22 /* NIOServerTests */,
+				BFB6D34E2C354D2300313F22 /* NIOServerUITests */,
+				BFB6D32C2C354D2200313F22 /* Products */,
+				1C3CC38D6BAD095FBC846161 /* Pods */,
+				41E169F37B1ED13471EF8269 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BFB6D32C2C354D2200313F22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFB6D32B2C354D2200313F22 /* NIOServer.app */,
+				BFB6D3412C354D2300313F22 /* NIOServerTests.xctest */,
+				BFB6D34B2C354D2300313F22 /* NIOServerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFB6D32D2C354D2200313F22 /* NIOServer */ = {
+			isa = PBXGroup;
+			children = (
+				BFB6D36D2C3556FA00313F22 /* Crypto */,
+				BFB6D3682C354F9C00313F22 /* Logger */,
+				BFB6D35F2C354EA800313F22 /* HttpServer */,
+				BFB6D32E2C354D2200313F22 /* AppDelegate.swift */,
+				BFB6D3302C354D2200313F22 /* SceneDelegate.swift */,
+				BFB6D3322C354D2200313F22 /* ViewController.swift */,
+				BFB6D3732C35701A00313F22 /* ContentView.swift */,
+				BFB6D3342C354D2200313F22 /* Main.storyboard */,
+				BFB6D3372C354D2300313F22 /* Assets.xcassets */,
+				BFB6D3392C354D2300313F22 /* LaunchScreen.storyboard */,
+				BFB6D33C2C354D2300313F22 /* Info.plist */,
+			);
+			path = NIOServer;
+			sourceTree = "<group>";
+		};
+		BFB6D3442C354D2300313F22 /* NIOServerTests */ = {
+			isa = PBXGroup;
+			children = (
+				BFB6D3452C354D2300313F22 /* NIOServerTests.swift */,
+			);
+			path = NIOServerTests;
+			sourceTree = "<group>";
+		};
+		BFB6D34E2C354D2300313F22 /* NIOServerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BFB6D34F2C354D2300313F22 /* NIOServerUITests.swift */,
+				BFB6D3512C354D2300313F22 /* NIOServerUITestsLaunchTests.swift */,
+			);
+			path = NIOServerUITests;
+			sourceTree = "<group>";
+		};
+		BFB6D35F2C354EA800313F22 /* HttpServer */ = {
+			isa = PBXGroup;
+			children = (
+				BFB6D3642C354F1700313F22 /* LocalHttpServer.swift */,
+				BFB6D3652C354F1700313F22 /* LocalHttpServer+Cert.swift */,
+				BFB6D3602C354ED800313F22 /* LocalHttpServer+ServiceNIO.swift */,
+				BFB6D3612C354ED800313F22 /* NIOHttpServer.swift */,
+				BFB6D36B2C35537E00313F22 /* FilePath.swift */,
+			);
+			path = HttpServer;
+			sourceTree = "<group>";
+		};
+		BFB6D3682C354F9C00313F22 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				BFB6D3692C354FE600313F22 /* ConsoleLogger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		BFB6D36D2C3556FA00313F22 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				BFB6D36E2C35575800313F22 /* SwiftCryto.swift */,
+				BFB6D3702C355D1A00313F22 /* UIDevice+IP.swift */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFB6D32A2C354D2200313F22 /* NIOServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFB6D3552C354D2300313F22 /* Build configuration list for PBXNativeTarget "NIOServer" */;
+			buildPhases = (
+				D441194019BAF870DD1F7BC2 /* [CP] Check Pods Manifest.lock */,
+				BFB6D3272C354D2200313F22 /* Sources */,
+				BFB6D3282C354D2200313F22 /* Frameworks */,
+				BFB6D3292C354D2200313F22 /* Resources */,
+				8D08642C282E36D18E06753A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NIOServer;
+			productName = NIOServer;
+			productReference = BFB6D32B2C354D2200313F22 /* NIOServer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BFB6D3402C354D2300313F22 /* NIOServerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFB6D3582C354D2300313F22 /* Build configuration list for PBXNativeTarget "NIOServerTests" */;
+			buildPhases = (
+				D92659691F889C804508DE2E /* [CP] Check Pods Manifest.lock */,
+				BFB6D33D2C354D2300313F22 /* Sources */,
+				BFB6D33E2C354D2300313F22 /* Frameworks */,
+				BFB6D33F2C354D2300313F22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFB6D3432C354D2300313F22 /* PBXTargetDependency */,
+			);
+			name = NIOServerTests;
+			productName = NIOServerTests;
+			productReference = BFB6D3412C354D2300313F22 /* NIOServerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BFB6D34A2C354D2300313F22 /* NIOServerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFB6D35B2C354D2300313F22 /* Build configuration list for PBXNativeTarget "NIOServerUITests" */;
+			buildPhases = (
+				85248361B4953D2375A977A1 /* [CP] Check Pods Manifest.lock */,
+				BFB6D3472C354D2300313F22 /* Sources */,
+				BFB6D3482C354D2300313F22 /* Frameworks */,
+				BFB6D3492C354D2300313F22 /* Resources */,
+				2B0CBDFFAC32ECA83A5CB2FE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFB6D34D2C354D2300313F22 /* PBXTargetDependency */,
+			);
+			name = NIOServerUITests;
+			productName = NIOServerUITests;
+			productReference = BFB6D34B2C354D2300313F22 /* NIOServerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFB6D3232C354D2200313F22 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					BFB6D32A2C354D2200313F22 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					BFB6D3402C354D2300313F22 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = BFB6D32A2C354D2200313F22;
+					};
+					BFB6D34A2C354D2300313F22 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = BFB6D32A2C354D2200313F22;
+					};
+				};
+			};
+			buildConfigurationList = BFB6D3262C354D2200313F22 /* Build configuration list for PBXProject "NIOServer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BFB6D3222C354D2200313F22;
+			productRefGroup = BFB6D32C2C354D2200313F22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFB6D32A2C354D2200313F22 /* NIOServer */,
+				BFB6D3402C354D2300313F22 /* NIOServerTests */,
+				BFB6D34A2C354D2300313F22 /* NIOServerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BFB6D3292C354D2200313F22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB6D3382C354D2300313F22 /* Assets.xcassets in Resources */,
+				BFB6D33B2C354D2300313F22 /* Base in Resources */,
+				BFB6D3362C354D2200313F22 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB6D33F2C354D2300313F22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB6D3492C354D2300313F22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B0CBDFFAC32ECA83A5CB2FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NIOServer-NIOServerUITests/Pods-NIOServer-NIOServerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NIOServer-NIOServerUITests/Pods-NIOServer-NIOServerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NIOServer-NIOServerUITests/Pods-NIOServer-NIOServerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85248361B4953D2375A977A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NIOServer-NIOServerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D08642C282E36D18E06753A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NIOServer/Pods-NIOServer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NIOServer/Pods-NIOServer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NIOServer/Pods-NIOServer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D441194019BAF870DD1F7BC2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NIOServer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D92659691F889C804508DE2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NIOServerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFB6D3272C354D2200313F22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB6D3332C354D2200313F22 /* ViewController.swift in Sources */,
+				BFB6D36A2C354FE600313F22 /* ConsoleLogger.swift in Sources */,
+				BFB6D3742C35701A00313F22 /* ContentView.swift in Sources */,
+				BFB6D32F2C354D2200313F22 /* AppDelegate.swift in Sources */,
+				BFB6D3662C354F1700313F22 /* LocalHttpServer.swift in Sources */,
+				BFB6D3622C354ED800313F22 /* LocalHttpServer+ServiceNIO.swift in Sources */,
+				BFB6D3672C354F1700313F22 /* LocalHttpServer+Cert.swift in Sources */,
+				BFB6D3632C354ED800313F22 /* NIOHttpServer.swift in Sources */,
+				BFB6D36F2C35575800313F22 /* SwiftCryto.swift in Sources */,
+				BFB6D3712C355D1A00313F22 /* UIDevice+IP.swift in Sources */,
+				BFB6D3312C354D2200313F22 /* SceneDelegate.swift in Sources */,
+				BFB6D36C2C35537E00313F22 /* FilePath.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB6D33D2C354D2300313F22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB6D3462C354D2300313F22 /* NIOServerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB6D3472C354D2300313F22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB6D3522C354D2300313F22 /* NIOServerUITestsLaunchTests.swift in Sources */,
+				BFB6D3502C354D2300313F22 /* NIOServerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BFB6D3432C354D2300313F22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFB6D32A2C354D2200313F22 /* NIOServer */;
+			targetProxy = BFB6D3422C354D2300313F22 /* PBXContainerItemProxy */;
+		};
+		BFB6D34D2C354D2300313F22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFB6D32A2C354D2200313F22 /* NIOServer */;
+			targetProxy = BFB6D34C2C354D2300313F22 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BFB6D3342C354D2200313F22 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFB6D3352C354D2200313F22 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFB6D3392C354D2300313F22 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFB6D33A2C354D2300313F22 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BFB6D3532C354D2300313F22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BFB6D3542C354D2300313F22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BFB6D3562C354D2300313F22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC13DCC2E414209C57D0E3FC /* Pods-NIOServer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2H2868WN7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NIOServer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lsx.tch.NIOServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFB6D3572C354D2300313F22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DA63CCB073B6692A77EB5AA /* Pods-NIOServer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2H2868WN7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NIOServer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lsx.tch.NIOServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BFB6D3592C354D2300313F22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE6C41076A257C33ED3820A /* Pods-NIOServerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2H2868WN7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lsx.tch.NIOServerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NIOServer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NIOServer";
+			};
+			name = Debug;
+		};
+		BFB6D35A2C354D2300313F22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42007286B662CB9E65889BB1 /* Pods-NIOServerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2H2868WN7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lsx.tch.NIOServerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NIOServer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NIOServer";
+			};
+			name = Release;
+		};
+		BFB6D35C2C354D2300313F22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BAC1E29833006B9178A0716 /* Pods-NIOServer-NIOServerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2H2868WN7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lsx.tch.NIOServerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NIOServer;
+			};
+			name = Debug;
+		};
+		BFB6D35D2C354D2300313F22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BBCA909A7327176B0EBFD8E /* Pods-NIOServer-NIOServerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2H2868WN7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lsx.tch.NIOServerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NIOServer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFB6D3262C354D2200313F22 /* Build configuration list for PBXProject "NIOServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFB6D3532C354D2300313F22 /* Debug */,
+				BFB6D3542C354D2300313F22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFB6D3552C354D2300313F22 /* Build configuration list for PBXNativeTarget "NIOServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFB6D3562C354D2300313F22 /* Debug */,
+				BFB6D3572C354D2300313F22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFB6D3582C354D2300313F22 /* Build configuration list for PBXNativeTarget "NIOServerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFB6D3592C354D2300313F22 /* Debug */,
+				BFB6D35A2C354D2300313F22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFB6D35B2C354D2300313F22 /* Build configuration list for PBXNativeTarget "NIOServerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFB6D35C2C354D2300313F22 /* Debug */,
+				BFB6D35D2C354D2300313F22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFB6D3232C354D2200313F22 /* Project object */;
+}
