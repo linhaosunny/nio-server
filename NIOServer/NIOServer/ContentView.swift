@@ -12,6 +12,8 @@ import RxSwift
 class ServerStatus: ObservableObject {
     @Published var isStart: Bool = false
     
+    @Published var isSSLCheck: Bool = false
+    
     var listenBag: DisposeBag = .init()
     
     @Published var connections: [LocalHttpServer.SocketServerStatusDM] = []
@@ -33,6 +35,11 @@ struct ContentView: View {
             .foregroundColor(.black)
             .cornerRadius(10)
         
+        Toggle(isOn: $serverStatus.isSSLCheck) {
+            Text("Open SSL")
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: 140, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         
         VStack(spacing: 30) {
             Circle()
@@ -73,8 +80,9 @@ struct ContentView: View {
 }
 
 extension ContentView {
+    
      func openServer() {
-        LocalHttpServer.openWebSocketServer { isSuccess in
+         LocalHttpServer.openWebSocketServer(isSSLSecure: serverStatus.isSSLCheck) { isSuccess in
             DispatchQueue.main.async {
                 serverStatus.isStart = isSuccess
             }
@@ -94,6 +102,17 @@ extension ContentView {
                 }
             })
             .disposed(by: serverStatus.listenBag)
+         
+         LocalHttpServer.receiveSubject
+             .subscribe(onNext: { context in
+                 guard let context else {
+                     return
+                 }
+        
+                 /// response for the receive data
+                 LocalHttpServer.serverSend(context.sessionId, text: context.content)
+             })
+             .disposed(by: serverStatus.listenBag)
     }
     
     func closeServr() {

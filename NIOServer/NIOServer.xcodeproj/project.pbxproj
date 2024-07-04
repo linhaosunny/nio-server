@@ -27,6 +27,7 @@
 		BFB6D36F2C35575800313F22 /* SwiftCryto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D36E2C35575800313F22 /* SwiftCryto.swift */; };
 		BFB6D3712C355D1A00313F22 /* UIDevice+IP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3702C355D1A00313F22 /* UIDevice+IP.swift */; };
 		BFB6D3742C35701A00313F22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3732C35701A00313F22 /* ContentView.swift */; };
+		BFB6D3762C3640B900313F22 /* server_certificate.p12 in Resources */ = {isa = PBXBuildFile; fileRef = BFB6D3752C3640B900313F22 /* server_certificate.p12 */; };
 		EAADA77CAD1EFDEF5CCF3629 /* Pods_NIOServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96EE857D0A9BF787DC73778D /* Pods_NIOServer.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		BFB6D36E2C35575800313F22 /* SwiftCryto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCryto.swift; sourceTree = "<group>"; };
 		BFB6D3702C355D1A00313F22 /* UIDevice+IP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+IP.swift"; sourceTree = "<group>"; };
 		BFB6D3732C35701A00313F22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BFB6D3752C3640B900313F22 /* server_certificate.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = server_certificate.p12; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 		BFB6D35F2C354EA800313F22 /* HttpServer */ = {
 			isa = PBXGroup;
 			children = (
+				BFB6D3752C3640B900313F22 /* server_certificate.p12 */,
 				BFB6D3642C354F1700313F22 /* LocalHttpServer.swift */,
 				BFB6D3652C354F1700313F22 /* LocalHttpServer+Cert.swift */,
 				BFB6D3602C354ED800313F22 /* LocalHttpServer+ServiceNIO.swift */,
@@ -327,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB6D3762C3640B900313F22 /* server_certificate.p12 in Resources */,
 				BFB6D3382C354D2300313F22 /* Assets.xcassets in Resources */,
 				BFB6D33B2C354D2300313F22 /* Base in Resources */,
 				BFB6D3362C354D2200313F22 /* Base in Resources */,

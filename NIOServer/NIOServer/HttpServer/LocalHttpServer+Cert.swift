@@ -7,12 +7,12 @@
 
 import UIKit
 
-/// p12证书信息
+/// p12 cert
 enum SSLPKCS12Certificate: String {
-    case vibemate
+    case server
 
     struct CertificateFile {
-        /// ceritificate name 证书名称
+        /// ceritificate name
         let name: String
         
         /// Ceritificate passphrase
@@ -20,7 +20,7 @@ enum SSLPKCS12Certificate: String {
     }
     
     struct CertificateData {
-        /// ceritificate name 证书数据
+        /// ceritificate datas
         let bytes: [UInt8]
         
         /// Ceritificate passphrase
@@ -29,24 +29,24 @@ enum SSLPKCS12Certificate: String {
 
     struct Certificate {
 
-        
-        /// 文件路径形式
+        /// cert file
         var file: CertificateFile?
-        ///  文件数据形式
+        ///  cert data
         var data: CertificateData?
     }
 
-    /// 证书信息
+    /// file of cert's info
     fileprivate var file: CertificateFile {
         switch self {
-        case .vibemate:
-            return .init(name: "", passphrase: certificate_passphrase() ?? "")
+        case .server:
+            return .init(name: "server_certificate", passphrase: "nioserver_pass")
         }
     }
     
+    /// data of cert's info
     fileprivate var data: CertificateData {
         switch self {
-        case .vibemate:
+        case .server:
             return .init(bytes: certificate_bytes(), passphrase: certificate_passphrase() ?? "")
         }
     }
@@ -54,7 +54,7 @@ enum SSLPKCS12Certificate: String {
 }
 
 extension SSLPKCS12Certificate.CertificateFile {
-    /// 证书文件路径
+    /// path
     var path: String? {
         func getFileBundle(name: String, path: FilePath)  -> String? {
             guard let path = path.filePath(name: name, type: .p12) else {
@@ -70,22 +70,22 @@ extension SSLPKCS12Certificate.CertificateFile {
 
 extension SSLPKCS12Certificate {
     
-    /// 使用文件
-    /// - Parameter certificate: 证书
-    /// - Returns: 文件
+    /// file
+    /// - Parameter certificate: cert
+    /// - Returns: file of cert
     static func file(_ certificate: SSLPKCS12Certificate) -> CertificateFile {
         return certificate.file
     }
     
-    /// 使用证书数据
-    /// - Parameter certificate: 证书
-    /// - Returns: 数据
+    /// data
+    /// - Parameter certificate: cert
+    /// - Returns: data of cert
     static func data(_ certificate: SSLPKCS12Certificate) -> CertificateData {
         return certificate.data
     }
 }
 
-/// MARK: 加密相关
+/// MARK:  encrypt
 extension SSLPKCS12Certificate {
     enum CertificateEncrypt {
         case data(head: String, tail: String)
@@ -98,31 +98,31 @@ extension SSLPKCS12Certificate {
         }
     }
     
-    /// 加密后的密码
-    /// - Returns: 结果
+    /// passphrase's encrypt
+    /// - Returns: result
     fileprivate func passphrase_encrypt_enn() -> SSLPKCS12Certificate.CertificateEncrypt {
         switch self {
-        case .vibemate:
+        case .server:
             return .data(head: "", tail: "")
         }
         
     }
     
-    /// 加密后的证书
-    /// - Returns: 结果
+    /// cert's encrypt
+    /// - Returns: result
     fileprivate func certificate_encrypt_enn() -> SSLPKCS12Certificate.CertificateEncrypt {
         switch self {
-        case .vibemate:
+        case .server:
             return .data(head: "", tail: "")
         }
     }
     
     
-    /// 证书密码
-    /// - Returns: 结果
+    /// origin passphrase
+    /// - Returns: result
     fileprivate func certificate_passphrase() -> String? {
         switch self {
-        case .vibemate:
+        case .server:
             let encrypt_text = passphrase_encrypt_enn().encrypt
             
             guard let decrypt = decrypt_content(decrypt: encrypt_text) else {
@@ -133,11 +133,11 @@ extension SSLPKCS12Certificate {
     }
     
     
-    /// 证书内容
-    /// - Returns: 结果
+    /// origin cert
+    /// - Returns: result
     fileprivate func certificate_bytes() -> [UInt8] {
         switch self {
-        case .vibemate:
+        case .server:
             let encrypt_text = certificate_encrypt_enn().encrypt
             
             
@@ -161,11 +161,11 @@ extension SSLPKCS12Certificate {
     }
 }
 
-// MARK: 加密撒盐操作
+// MARK: encrypt
 extension SSLPKCS12Certificate {
-    /// 加密相关
-    /// - Parameter t: 参数
-    /// - Returns: 结果
+    /// enn encrypt
+    /// - Parameter t: input
+    /// - Returns: result
     fileprivate static func enn(t: String) -> String {
         func reversed(text: String) -> String {
             return String(text.reversed())
@@ -188,9 +188,9 @@ extension SSLPKCS12Certificate {
         return b
     }
     
-    /// 解密相关
-    /// - Parameter t: 参数
-    /// - Returns: 结果
+    /// dnn decrypt
+    /// - Parameter t: input
+    /// - Returns: result
     fileprivate static func dnn(t: String) -> String {
         func reversed(text: String) -> String {
             return String(text.reversed())
@@ -215,16 +215,14 @@ extension SSLPKCS12Certificate {
 
 extension SSLPKCS12Certificate {
     
-    /// 加密证书内容
+    /// enn cert
     static func enn_cert_content() {
-        guard let path = SSLPKCS12Certificate.file(.vibemate).path,
+        guard let path = SSLPKCS12Certificate.file(.server).path,
               let data = try? Data(contentsOf: .init(fileURLWithPath: path))
         else { return  }
         
         let content = data.base64EncodedString()
         
-        // 加密内容
-//        let encrypted = DXDtxUtils.dtxEncrypt(encrypt: content)
         
         let encrypted = content.encrypt
         
@@ -244,9 +242,9 @@ extension SSLPKCS12Certificate {
     }
     
     
-    /// 密钥加密
+    /// enn cert passphrase
     fileprivate static func enn_cert_passphrase() {
-        let encrypt_text = ""
+        let encrypt_text = "nioserver_pass"
         
         
         if let decrypt = encrypt_text.decrypt {

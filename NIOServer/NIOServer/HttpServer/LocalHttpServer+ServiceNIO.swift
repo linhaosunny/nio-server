@@ -13,24 +13,25 @@ import NIOSSL
 
 
 extension LocalHttpServer {
-    /// 打开WebSocket服务
-    static func openWebSocketServer(completion: @escaping (_ isSuccess: Bool) -> Void = {_ in }) {
+    /// open WebSocket server
+    static func openWebSocketServer(isSSLSecure: Bool = false,
+                                    completion: @escaping (_ isSuccess: Bool) -> Void = {_ in }) {
         guard !isServerActive() else {
             stopServer { isSuccess in
-                startServer(completion: completion)
+                startServer(isSSLSecure: isSSLSecure, completion: completion)
             }
             return
         }
         
-        startServer(completion: completion)
+        startServer(isSSLSecure: isSSLSecure, completion: completion)
     }
     
-    /// 关闭WebSocket服务
+    /// close WebSocket server
     static func closeWebSocketServer(completion: @escaping (_ isSuccess: Bool) -> Void = {_ in }) {
         stopServer(completion: completion)
     }
     
-    /// 获取服务地址
+    /// server's full url
     static var serverFullUrl: String? {
         guard let host = UIDevice.WIFIIPAddress, let httpServer else { return nil }
         
@@ -41,7 +42,7 @@ extension LocalHttpServer {
         return "\(head)://\(domain):\(port)\(serverPath)"
     }
     
-    /// 服务器基础地址
+    /// server's url
     static var serverUrl: String? {
         guard let host = UIDevice.WIFIIPAddress, let httpServer else { return nil }
         
@@ -51,35 +52,39 @@ extension LocalHttpServer {
         return "\(head)://\(domain):\(port)"
     }
     
-    /// 服务器路径
+    /// server's url path
     static var serverPath: String {
         return "/websocket"
     }
     
 }
 
-// MARK: Socket服务
+// MARK: Socket Server
 extension LocalHttpServer {
     
-    /// 本地http服务
+    /// http server
     private(set) static var httpServer: NIOHttpServer?
-    /// 服务器队列
+    /// server's work queue
     private static var serverQueue: DispatchQueue = .init(label: "Local.HttpServer.queue")
-    /// 可用端口
+    /// avalibe ports
     private static let ports: [Int] = [1024, 2048]
-    /// 端口索引
+    /// port Index
     private static var portIndex: Int = 0
-    /// 启动服务
-    /// - Parameter port: 端口
-    private static func startServer(port: Int = 1024,
+    
+    /// Start Server
+    /// - Parameter port: port
+    /// - Parameter isSSLSecure: SSL Check
+    /// - Parameter completion: completion call back
+    private static func startServer(isSSLSecure: Bool = false,
+                                    port: Int = 1024,
                                     completion: @escaping (_ isSuccess: Bool) -> Void) {
         serverQueue.async {
             let host = UIDevice.WIFIIPAddress ?? "localhost"
-            /// 设置SSL证书
-            let server = NIOHttpServer(host: host, maxFrameSize: 2097152, certificateSSL: .ssl_certificate_pkcs12_data(bytes: SSLPKCS12Certificate.data(.vibemate).bytes, passphrase: SSLPKCS12Certificate.data(.vibemate).passphrase))
+            /// configure SSL cert
+            let server = NIOHttpServer(host: host, maxFrameSize: 2097152, certificateSSL: isSSLSecure ? .ssl_certificate_pkcs12(file: SSLPKCS12Certificate.file(.server).path ?? "", passphrase: SSLPKCS12Certificate.file(.server).passphrase) : .none)
             self.httpServer = server
             
-            /// 服务端的socket
+            /// socket
             server.socketNotify { notify in
                 webSocketNotify(notify)
             }
@@ -119,7 +124,7 @@ extension LocalHttpServer {
         return httpServer?.isActive ?? false
     }
     
-    /// 停止服务
+    /// stop server
     private static func stopServer(completion: @escaping (_ isSuccess: Bool) -> Void) {
         serverQueue.async {
             do {
@@ -137,30 +142,31 @@ extension LocalHttpServer {
     
 
 
-// MARK: Socket发送消息处理
+// MARK: Socket Server Send Message
 extension LocalHttpServer {
     
-    /// 服务端发送文本
+    /// Server's send text
     /// - Parameters:
-    ///   - sessionId: 会话id
-    ///   - text: 文本
+    ///   - sessionId: connect session id
+    ///   - text: content text
     static func serverSend(_ channelId: String, text: String) {
         httpServer?.sendServer(data: .socket_text(channelId: channelId, text: text))
     }
 
-    /// 服务端发送Data
+    /// Server's send Data
     /// - Parameters:
-    ///   - session: 会话
+    ///   - channelId: connect session id
+    ///   - data: data
     static func serverSend(_ channelId: String, data: Data) {
         httpServer?.sendServer(data: .socket_data(channelId: channelId, data: data))
     }
 }
 
-// MARK: Socket服务回调
+// MARK: Socket Server's Notify back
 extension LocalHttpServer {
     
-    /// 服务器Socket通知
-    /// - Parameter notify: 通知
+    /// Server's Socket notify
+    /// - Parameter notify: notify
     static func webSocketNotify(_ notify: NIOHttpServer.NIOServerReceiveSocket) {
         switch notify {
         case .connect(let channelId):
@@ -178,44 +184,43 @@ extension LocalHttpServer {
     }
 
     
-    /// socket连接
-    /// - Parameter sessionId: 会话Id
+    /// client's socke connectt
+    /// - Parameter sessionId: connect session Id
     fileprivate static func webSocketConnected(_ sessionId: String) {
         
-        /// 连接通知
+        /// subect connect
         connectStatusSubject.onNext(.init(sessionId: sessionId, isConnect: true))
         
         
         logger.debug("\r\n Welcome \(sessionId) connect To Server. 🍺🍺🍺.\r\n")
     }
     
-    /// socket断开连接
-    /// - Parameter session: 会话
+    /// client's socke disconnectt
+    /// - Parameter sessionId: connect session Id
     fileprivate static func webSocketDisconnected(_ sessionId: String) {
         
-        /// 断开连接
+        /// subect disconnect
         connectStatusSubject.onNext(.init(sessionId: sessionId, isConnect: false))
     }
     
     
-    /// socket收到文本消息
+    /// server's receiver client's text
     /// - Parameters:
-    ///   - session: 会话
-    ///   - text: 文本
+    ///   - session: session id
+    ///   - text: text
     fileprivate static func webSocket(_ sessionId: String, didReceive text: String) {
         
-        /// 接收到文本内容
+        /// subject text
         receiveSubject.onNext(.init(sessionId: sessionId, content: text))
     
     }
     
     
-    /// 收到二进制数据
+    /// server's receiver client's data
     /// - Parameters:
-    ///   - session: 会话
-    ///   - data: 数据
+    ///   - session: session id
+    ///   - text: data
     fileprivate static func webSocket(_ sessionId: String, didReceive data: Data) {
-        // 接收消息
         
         guard let content = String.init(data: data, encoding: .utf8) else {
             return

@@ -27,7 +27,19 @@ class NIOHttpServer {
     
     /// isOpenSSL
     var isSSLSecure: Bool {
-        return _isSSLSecure
+        switch certificateSSL {
+        case .ssl_certificate_pkcs12_data(let bytes,let passphrase):
+            guard let p12Bundle = try? NIOSSLPKCS12Bundle(buffer: bytes, passphrase: passphrase.utf8) else { return false }
+            
+            return true
+        case .ssl_certificate_pkcs12(let file, let passphrase):
+            guard let p12Bundle = try? NIOSSLPKCS12Bundle(file: file, passphrase: passphrase.utf8) else { return false }
+
+            
+            return true
+        case .none:
+            return false
+        }
     }
     
     /// isServer Active
@@ -43,8 +55,6 @@ class NIOHttpServer {
     private var maxFrameSize: Int = 16384
     /// The server's SSL Certificate
     private var certificateSSL: NIOSSLCertificateType = .none
-    /// The server's SSL Secure
-    private var _isSSLSecure: Bool = false
     
     /// The server's event loop group.
     private let group: MultiThreadedEventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
@@ -65,11 +75,11 @@ class NIOHttpServer {
     /// Server's Socket out notify
     private var _socketOutNotify:NIOSSLServerSocketNotifyCallBack?
     
-    /// 初始化服务
+    /// init server
     /// - Parameters:
-    ///   - host: 名称
-    ///   - maxFrameSize: 最大帧
-    ///   - certificateSSL: SSL验证
+    ///   - host: host name xx.xx.xx
+    ///   - maxFrameSize: max socket frame
+    ///   - certificateSSL: SSL cert
     init(host: String,
          maxFrameSize: Int = 16384,
          certificateSSL: NIOSSLCertificateType = .none) {
@@ -89,11 +99,9 @@ class NIOHttpServer {
                 }
                 
                 guard let sslContext = try? self.serverSSLContext() else {
-                    self._isSSLSecure = false
                     return self.configureWebSocketChannel(channel: channel)
                 }
                 
-                self._isSSLSecure = true
                 /// 配置ssl上下文
                 return channel.pipeline.addHandler(NIOSSLServerHandler(context: sslContext)).flatMap {
                     return self.configureWebSocketChannel(channel: channel)
@@ -107,8 +115,8 @@ class NIOHttpServer {
     }
     
     
-    /// 配置服务器SSL
-    /// - Returns: 结果
+    /// config SSL
+    /// - Returns: result
     private func serverSSLContext() throws -> NIOSSLContext? {
         
         switch certificateSSL {
@@ -129,11 +137,11 @@ class NIOHttpServer {
         }
     }
     
-    /// 配置Socket通道
-    /// - Parameter channel: 通道
-    /// - Returns: 结果
+    /// config Socket channel
+    /// - Parameter channel: socket channel
+    /// - Returns: result
     private func configureWebSocketChannel(channel: Channel) -> EventLoopFuture<Void> {
-        /// socket通道连接
+        /// socket connect listen
         websocketHandler.channelAdded = { [weak self] context in
             guard let self else { return }
             
@@ -143,7 +151,7 @@ class NIOHttpServer {
             
             self._socketOutNotify?(.connect(channelId: key))
         }
-        /// socket通道关闭
+        /// socket close listen
         websocketHandler.channelClose = { [weak self] context in
             guard let self else { return }
             
@@ -154,7 +162,7 @@ class NIOHttpServer {
             self._socketOutNotify?(.disconnect(channelId: key))
         }
         
-        /// socket服务错误导致的关闭
+        /// socket error listen
         websocketHandler.channelErrorClose = { [weak self] context, code in
             guard let self else { return }
             
@@ -165,7 +173,7 @@ class NIOHttpServer {
             self._socketOutNotify?(.close(channelId: key, code: code))
         }
         
-        /// socket收到数据
+        /// socket receive listen
         websocketHandler.channelReceive = { [weak self] receive in
             guard let self else { return }
     
@@ -187,8 +195,8 @@ class NIOHttpServer {
                 return channel.eventLoop.makeFailedFuture(ChannelError.alreadyClosed)
             }
             
-            /// 处理片段帧, 聚合成完整的帧
-            return channel.pipeline.addHandler(NIOWebSocketFrameAggregator(minNonFinalFragmentSize: 1, maxAccumulatedFrameCount: 1<<16, maxAccumulatedFrameSize: maxFrameSize)).flatMap {
+            /// socket fragment for frame Aggregator
+            return channel.pipeline.addHandler(NIOWebSocketFrameAggregator(minNonFinalFragmentSize: 8, maxAccumulatedFrameCount: 1024, maxAccumulatedFrameSize: 1<<16)).flatMap {
                 return channel.pipeline.addHandler(self.websocketHandler)
             }
         }
@@ -211,49 +219,49 @@ class NIOHttpServer {
     }
 }
 
-// MARK: 服务器公开的接口
+// MARK: Public interface
 extension NIOHttpServer {
-    /// 定义回调
+    /// call back
     public typealias NIOSSLServerSocketNotifyCallBack = (_ receive: NIOServerReceiveSocket) -> Void
     
     public enum NIOSSLCertificateType {
-        /// p12证书文件
+        /// p12 file
         case ssl_certificate_pkcs12(file: String, passphrase: String)
-        /// p12证书内容
+        /// p12 data
         case ssl_certificate_pkcs12_data(bytes: [UInt8], passphrase: String)
         
         case none
     }
     
-    /// 服务发送数据类型
+    /// Server's send Data
     public enum NIOServerSendData {
-        /// websocket写text
+        /// websocket write text
         case socket_text(channelId: String, text: String)
         
-        /// websocket写data
+        /// websocket write data
         case socket_data(channelId: String, data: Data)
         
-        ///  http写入text
+        ///  http write text
         case http(channelId: String, text: String)
     }
     
-    /// 服务器接收类型
+    /// Server's receive Socket
     public enum NIOServerReceiveSocket {
-        ///  客户端连接上服务器
+        ///  client's connect
         case connect(channelId: String)
-        ///  客户端断开连接
+        ///  client's disconnect
         case disconnect(channelId: String)
-        /// 服务器关闭连接
+        /// server's error for close
         case close(channelId: String, code: WebSocketErrorCode)
-        /// 收到文本
+        ///  receive text
         case text(channelId: String, text: String)
-        ///  收到data
+        ///  receive data
         case data(channelId: String, data: Data)
     }
     
-    /// 启动服务器
-    /// - Parameter port: 端口
-    /// - Returns: 结果
+    /// Start server
+    /// - Parameter port: port of server
+    /// - Returns: result
     public func start(port: Int) -> Error? {
         do {
             let bootstrap = initServer()
@@ -270,7 +278,7 @@ extension NIOHttpServer {
     }
     
     
-    /// 关闭服务
+    /// close server
     public func stop() throws {
         clearChannelAll()
         
@@ -280,8 +288,8 @@ extension NIOHttpServer {
     }
     
     
-    /// 发送数据
-    /// - Parameter data: 数据
+    /// send data
+    /// - Parameter data: data
     public func sendServer(data: NIOServerSendData) {
         switch data {
         case .socket_text(let channelId,  let text):
@@ -314,7 +322,7 @@ extension NIOHttpServer {
 }
 
 
-// MARK: HTTP相关的处理回调
+// MARK: HTTP Server Handler
 extension NIOHttpServer {
   
     fileprivate final class HTTPHandler: ChannelInboundHandler, RemovableChannelHandler {
@@ -401,19 +409,19 @@ extension NIOHttpServer {
     }
 }
 
-// MARK: WebSocket相关的处理回调
+// MARK: WebSocket Server Handler
 extension NIOHttpServer {
     
-    /// 服务接收数据
+    /// Server receive data
     fileprivate enum WebSocketReceiveData {
-        /// websocket写text
+        /// websocket write text
         case socket_text(context: ChannelHandlerContext, text: String)
         
-        /// websocket写data
+        /// websocket write data
         case socket_data(context: ChannelHandlerContext, data: Data)
     }
     
-    /// websocket处理回调
+    /// websocket handle
     fileprivate final class WebSocketHandler: ChannelInboundHandler {
         typealias InboundIn = WebSocketFrame
         typealias OutboundOut = WebSocketFrame
@@ -421,13 +429,13 @@ extension NIOHttpServer {
         /// socket connected
         var channelAdded:((_ context: ChannelHandlerContext) -> Void)?
         
-        /// socket 接收到数据
+        /// socket receive data
         var channelReceive:((_ data: WebSocketReceiveData) -> Void)?
         
-        /// socket关闭
+        /// socket close
         var channelClose:((_ context: ChannelHandlerContext) -> Void)?
         
-        /// socket错误关闭
+        /// socket error
         var channelErrorClose:((_ context: ChannelHandlerContext,_ code: WebSocketErrorCode) -> Void)?
         
 
@@ -521,12 +529,12 @@ extension NIOHttpServer {
 
 }
 
-/// 通道操作
+// MARK: Channel Operation
 extension NIOHttpServer {
     
-    /// 获取会话key
-    /// - Parameter session: 会话
-    /// - Returns: 结果
+    /// get connect channel key
+    /// - Parameter session: channel
+    /// - Returns: result
     private func channelKey(_ channel: ChannelHandlerContext) -> String? {
         guard let key = channel.remoteAddress?.description else {
             return nil
@@ -535,8 +543,8 @@ extension NIOHttpServer {
         return key
     }
     
-    /// 缓存WebSocket会话
-    /// - Parameter session: 会话
+    /// cache connect of channel
+    /// - Parameter session: channel
     private func cacheChannel(_ channel: ChannelHandlerContext) {
         guard let key = channelKey(channel) else {
             return
@@ -545,8 +553,8 @@ extension NIOHttpServer {
         connectedChannels[key] = channel
     }
     
-    /// 清除WebSocket会话
-    /// - Parameter session: 会话
+    /// clear connect of channel
+    /// - Parameter session: channel
     private func clearChannel(_ channel: ChannelHandlerContext) {
         guard let key = channelKey(channel) else {
             return
@@ -555,7 +563,7 @@ extension NIOHttpServer {
         connectedChannels.removeValue(forKey: key)
     }
     
-    /// 清理所有的会话
+    /// clear all connect channel
     private func clearChannelAll() {
         guard !connectedChannels.isEmpty else {
             return
@@ -566,10 +574,10 @@ extension NIOHttpServer {
 }
 extension NIOHttpServer.WebSocketHandler {
     
-    /// 发送文本
+    /// send text
     /// - Parameters:
-    ///   - context: 通道上下文
-    ///   - text: 文本
+    ///   - context: context of channel
+    ///   - text: text
     fileprivate func sendServer(context: ChannelHandlerContext, text: String) {
         context.eventLoop.execute {
             guard context.channel.isActive else { return }
@@ -591,9 +599,9 @@ extension NIOHttpServer.WebSocketHandler {
 
     }
     
-    /// 发送Data
+    /// send Data
     /// - Parameters:
-    ///   - context: 通道上下文
+    ///   - context: context of channel
     ///   - data: Data
     fileprivate func sendServer(context: ChannelHandlerContext, data: Data) {
         context.eventLoop.execute {
