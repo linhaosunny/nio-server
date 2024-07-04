@@ -9,12 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 20) {
+        Text("SwiftNIO Server")
+            .padding()
+            .font(.title)
+            .foregroundColor(.black)
+            .cornerRadius(10)
+        
+        VStack(spacing: 30) {
+            
             Button(action: {
                 // Handle button 1 tap
                 openServer()
             }) {
-                Text("打开服务器")
+                Text("Open server")
                     .padding()
                     .background(Color.green)
                     .foregroundColor(.white)
@@ -25,7 +32,7 @@ struct ContentView: View {
                 // Handle button 2 tap
                 closeServr()
             }) {
-                Text("关闭服务器")
+                Text("Close server")
                     .padding()
                     .background(Color.yellow)
                     .foregroundColor(.white)
