@@ -35,7 +35,7 @@ extension LocalHttpServer {
         guard let host = UIDevice.WIFIIPAddress, let httpServer else { return nil }
         
         let head = httpServer.isSSLSecure ? "wss" : "ws"
-        let domain = httpServer.isSSLSecure ? "\(host).lovense.club" : host
+        let domain = httpServer.isSSLSecure ? "\(host)" : host
         let port = httpServer.port
         
         return "\(head)://\(domain):\(port)\(serverPath)"
@@ -46,7 +46,7 @@ extension LocalHttpServer {
         guard let host = UIDevice.WIFIIPAddress, let httpServer else { return nil }
         
         let head = httpServer.isSSLSecure ? "wss" : "ws"
-        let domain = httpServer.isSSLSecure ? "\(host).lovense.club" : host
+        let domain = httpServer.isSSLSecure ? "\(host)" : host
         let port = httpServer.port
         return "\(head)://\(domain):\(port)"
     }

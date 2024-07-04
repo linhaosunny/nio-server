@@ -27,14 +27,7 @@ class NIOHttpServer {
     
     /// isOpenSSL
     var isSSLSecure: Bool {
-        switch certificateSSL {
-        case .ssl_certificate_pkcs12(let file, let passphrase):
-            return true
-        case .ssl_certificate_pkcs12_data(let bytes,let passphrase):
-            return true
-        case .none:
-            return false
-        }
+        return _isSSLSecure
     }
     
     /// isServer Active
@@ -50,6 +43,8 @@ class NIOHttpServer {
     private var maxFrameSize: Int = 16384
     /// The server's SSL Certificate
     private var certificateSSL: NIOSSLCertificateType = .none
+    /// The server's SSL Secure
+    private var _isSSLSecure: Bool = false
     
     /// The server's event loop group.
     private let group: MultiThreadedEventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
@@ -94,9 +89,11 @@ class NIOHttpServer {
                 }
                 
                 guard let sslContext = try? self.serverSSLContext() else {
+                    self._isSSLSecure = false
                     return self.configureWebSocketChannel(channel: channel)
                 }
                 
+                self._isSSLSecure = true
                 /// 配置ssl上下文
                 return channel.pipeline.addHandler(NIOSSLServerHandler(context: sslContext)).flatMap {
                     return self.configureWebSocketChannel(channel: channel)
