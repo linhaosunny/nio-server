@@ -131,6 +131,8 @@ extension LocalHttpServer {
                 try httpServer?.stop()
                 httpServer = nil
                 
+                receiveSubject.onNext(nil)
+                connectStatusSubject.onNext(nil)
                 completion(true)
             } catch let error {
                 logger.error("Server stop error: \(error)")
