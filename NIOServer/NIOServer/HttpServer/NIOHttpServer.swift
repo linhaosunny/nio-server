@@ -196,7 +196,7 @@ class NIOHttpServer {
             }
             
             /// socket fragment for frame Aggregator
-            return channel.pipeline.addHandler(NIOWebSocketFrameAggregator(minNonFinalFragmentSize: 8, maxAccumulatedFrameCount: 1024, maxAccumulatedFrameSize: 1<<16)).flatMap {
+            return channel.pipeline.addHandler(NIOWebSocketFrameAggregator(minNonFinalFragmentSize: 8, maxAccumulatedFrameCount: 1024, maxAccumulatedFrameSize: 1<<24)).flatMap {
                 return channel.pipeline.addHandler(self.websocketHandler)
             }
         }
