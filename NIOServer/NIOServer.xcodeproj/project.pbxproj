@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		67862ED2B08B33DE951DEBC5 /* Pods_NIOServer_NIOServerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118478A353E3250B88B1EF04 /* Pods_NIOServer_NIOServerUITests.framework */; };
 		7396976E1698EEF3C392B0A7 /* Pods_NIOServerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E08AA22CE2D967A0FA21357 /* Pods_NIOServerTests.framework */; };
+		BF55FC4F2C3E65B5009CE260 /* freestyle.com.pem in Resources */ = {isa = PBXBuildFile; fileRef = BF55FC4E2C3E65B5009CE260 /* freestyle.com.pem */; };
 		BFB6D32F2C354D2200313F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D32E2C354D2200313F22 /* AppDelegate.swift */; };
 		BFB6D3312C354D2200313F22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3302C354D2200313F22 /* SceneDelegate.swift */; };
 		BFB6D3332C354D2200313F22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6D3322C354D2200313F22 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		5E08AA22CE2D967A0FA21357 /* Pods_NIOServerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NIOServerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EE857D0A9BF787DC73778D /* Pods_NIOServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NIOServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC13DCC2E414209C57D0E3FC /* Pods-NIOServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIOServer.debug.xcconfig"; path = "Target Support Files/Pods-NIOServer/Pods-NIOServer.debug.xcconfig"; sourceTree = "<group>"; };
+		BF55FC4E2C3E65B5009CE260 /* freestyle.com.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = freestyle.com.pem; sourceTree = "<group>"; };
 		BFB6D32B2C354D2200313F22 /* NIOServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NIOServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB6D32E2C354D2200313F22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFB6D3302C354D2200313F22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				BFB6D3752C3640B900313F22 /* server_certificate.p12 */,
+				BF55FC4E2C3E65B5009CE260 /* freestyle.com.pem */,
 				BFB6D3642C354F1700313F22 /* LocalHttpServer.swift */,
 				BFB6D3652C354F1700313F22 /* LocalHttpServer+Cert.swift */,
 				BFB6D3602C354ED800313F22 /* LocalHttpServer+ServiceNIO.swift */,
@@ -330,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF55FC4F2C3E65B5009CE260 /* freestyle.com.pem in Resources */,
 				BFB6D3762C3640B900313F22 /* server_certificate.p12 in Resources */,
 				BFB6D3382C354D2300313F22 /* Assets.xcassets in Resources */,
 				BFB6D33B2C354D2300313F22 /* Base in Resources */,
