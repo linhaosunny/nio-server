@@ -21,6 +21,7 @@ public enum FilePath {
         case doc
         case realm
         case p12
+        case html
     }
     
     public var URL: Foundation.URL? {

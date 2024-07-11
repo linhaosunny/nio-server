@@ -326,25 +326,17 @@ extension NIOHttpServer {
 extension NIOHttpServer {
   
     fileprivate final class HTTPHandler: ChannelInboundHandler, RemovableChannelHandler {
-        let websocketResponse = """
+        let htmlResponse = """
         <!DOCTYPE html>
         <html>
           <head>
             <meta charset="utf-8">
             <title>Swift NIO WebSocket Test Page</title>
             <script>
-                var wsconnection = new WebSocket("ws://localhost:8888/websocket");
-                wsconnection.onmessage = function (msg) {
-                    var element = document.createElement("p");
-                    element.innerHTML = msg.data;
-        
-                    var textDiv = document.getElementById("websocket-stream");
-                    textDiv.insertBefore(element, null);
-                };
             </script>
           </head>
           <body>
-            <h1>WebSocket Stream</h1>
+            <h1>Swift NIO WebSocket Test Page</h1>
             <div id="websocket-stream"></div>
           </body>
         </html>
@@ -356,7 +348,22 @@ extension NIOHttpServer {
         private var responseBody: ByteBuffer!
         
         func handlerAdded(context: ChannelHandlerContext) {
-            self.responseBody = context.channel.allocator.buffer(string: websocketResponse)
+            func getDefaultPageHtml() -> String {
+                func getFileBundle(name: String, path: FilePath)  -> String? {
+                    guard let path = path.filePath(name: name, type: .html) else {
+                        return nil
+                    }
+                    
+                    return path
+                }
+                
+                guard let file = getFileBundle(name: "server", path: .mainBundle), let html = try? String.init(contentsOfFile: file) else { return htmlResponse }
+                
+                return html
+            }
+
+            
+            self.responseBody = context.channel.allocator.buffer(string: getDefaultPageHtml())
         }
         
         func handlerRemoved(context: ChannelHandlerContext) {
