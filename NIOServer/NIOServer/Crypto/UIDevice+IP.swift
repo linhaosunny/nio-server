@@ -25,7 +25,7 @@ extension UIDevice {
                    let addrFamily = interface.ifa_addr.pointee.sa_family
                    if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
                         let name = String(cString: interface.ifa_name)
-                        if name == "en0" {
+                        if name == "en0" || name == "en1" {
                              var addr = interface.ifa_addr.pointee
                              var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
                              getnameinfo(&addr, socklen_t(interface.ifa_addr.pointee.sa_len),
